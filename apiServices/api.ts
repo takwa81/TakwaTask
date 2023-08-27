@@ -1,0 +1,19 @@
+import { User } from "@/types"; // Update the path accordingly
+
+const API_BASE_URL = 'https://vmoi1dztsd.execute-api.eu-west-1.amazonaws.com/prod/auth/complete-your-data';
+const AUTH_TOKEN = 'eyJraWQiOiJMd21rQm9tTFJmcDNGOXcrQUJHcXhaQXByU1wvdVhkMENqNlVlYkJNSHRaTT0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoicGpUd1NjMFRzYkV5eXhFSnV0anVaZyIsInN1YiI6IjYyMTU4NGU0LTgwMzEtNzAwOS0wZThkLTVmZjMwMzM2MjJjMiIsImNvZ25pdG86Z3JvdXBzIjpbImV1LXdlc3QtMV82bjdINlZhRzRfR29vZ2xlIl0sImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLmV1LXdlc3QtMS5hbWF6b25hd3MuY29tXC9ldS13ZXN0LTFfNm43SDZWYUc0IiwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwiY29nbml0bzp1c2VybmFtZSI6Imdvb2dsZV8xMTM4ODIzMjc5OTMzOTEwNTQwMjkiLCJnaXZlbl9uYW1lIjoiTW9oYW1hZCIsIm5vbmNlIjoidTJaN1lwcDVycGhRRGJGajE3azc3UWk4Y2kteVh0RzVPX09iUDRwYk5GTXNqZWV3RjNUdHF2Snl3dGQxaTltbWRSeWY3LWNBYU5CckMxX0VwbHpNTlRjd1Q4X1NQVFN5MS1sM2pZYXB2RjlwM0xMc25rNHNBNWFjRHR5YTJWR283WXpWLWoyaXlJajJzUWdxdUdlQVgzaTVfZ0FiZmFXbjk5MmV6UVZtaHRFIiwiYXVkIjoibjV0NXN0ZG01dnNqa2lkbHJidWE5MHFlcSIsImlkZW50aXRpZXMiOlt7InVzZXJJZCI6IjExMzg4MjMyNzk5MzM5MTA1NDAyOSIsInByb3ZpZGVyTmFtZSI6Ikdvb2dsZSIsInByb3ZpZGVyVHlwZSI6Ikdvb2dsZSIsImlzc3VlciI6bnVsbCwicHJpbWFyeSI6InRydWUiLCJkYXRlQ3JlYXRlZCI6IjE2OTMxNTI5ODMxNTcifV0sInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjkzMTUyOTg0LCJleHAiOjE2OTMyMzkzODQsImlhdCI6MTY5MzE1Mjk4NCwiZmFtaWx5X25hbWUiOiJBYm9BemFuIiwianRpIjoiMDg4YzNiNmItMDJjZS00ZmRmLTljZGYtMDIxMDVjMThhZmRkIiwiZW1haWwiOiJtb2hhbWFkYWJvYXphbjk2M0BnbWFpbC5jb20ifQ.RDDGQi370GaSaYOLu48gcb9bXrrK4atztZAEdcheFmzB4bPhF2RivzmgHuS_ObxKr6wHVHCrQHS76Qwcj9z6VJe6cWi667wIFL80-Enx5d97zTOxpJCn5RstWVxvPeNc_MpRdHf5DxUS3AjFMITswauge2VXUuNNK36uz2JllwXObWlMCFyOg24PUYJjHtxo4srdSFaex8VWNmBYUGx6htrFg40D1yb8dcQSu63l_chdN94-sow3k3phpDa6IxzgkdKrHeJMTF7HfV0PmLcXVhZwYi4kXYqLv4G1dLn6LFoCY-QhQwa30APbaqeDiePV-FiXxxHNKTKmvJzA_360TQ';
+
+export async function updateProfile(data: Partial<User>) {
+  const response = await fetch(`${API_BASE_URL}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: AUTH_TOKEN,
+    },
+    body: JSON.stringify(data),
+  });
+  
+  if (!response.ok) {
+    throw new Error('Failed to update profile');
+  }
+}
